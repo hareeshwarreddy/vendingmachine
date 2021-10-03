@@ -6,6 +6,7 @@ import com.assignment.vendingmachine.exception.NoSufficientFundsException;
 import com.assignment.vendingmachine.util.CalculatorUtil;
 
 import java.util.EnumMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class VendingMachineServiceImpl implements VendingMachineService {
@@ -28,10 +29,10 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     }
 
     @Override
-    public EnumMap<CoinEnum,Integer> dispenseCoins(Integer amount) throws NoSufficientFundsException {
+    public Map<CoinEnum,Integer> dispenseCoins(Integer amount) throws NoSufficientFundsException {
         CalculatorUtil calculatorUtil = new CalculatorUtil();
         //calculate the number of coins with each coin denomination
-        EnumMap<CoinEnum,Integer> outputMap =  calculatorUtil.calculateCoinsForGivenAmount(amount,this.coins);
+        Map<CoinEnum,Integer> outputMap =  calculatorUtil.calculateCoinsForGivenAmount(amount,this.coins);
         //remove the used coins from machine based on above calculation
         calculatorUtil.emptyTheCoinsFromMachine(outputMap,this.coins);
         //if there are no coins available in the machine, changing state to EMPTY

@@ -48,13 +48,16 @@ public class VendingMachineApplication {
                     break;
                 case "3":
                     try {
-                        EnumMap<CoinEnum, Integer> outputMap = vendingMachineService.dispenseCoins(app.dispenseCoins(scanner));
+                        Map<CoinEnum, Integer> outputMap = vendingMachineService.dispenseCoins(app.dispenseCoins(scanner));
                         app.dispenseCoinsToUser(outputMap);
                     } catch (NoSufficientFundsException ex) {
                         System.out.println("Sorry!!..there are no supported coins in the machine to dispense for given amount.. please try with different amount");
                     }
                     break;
                 case "4":
+                    execute = false;
+                    break;
+                default:
                     execute = false;
 
             }
@@ -71,14 +74,14 @@ public class VendingMachineApplication {
                 if("X".equalsIgnoreCase(coinType)){
                     continue;
                 }
-                if(!CoinEnum.validate(Integer.valueOf(coinType))) {
+                if(!CoinEnum.validate(Integer.parseInt(coinType))) {
                     System.out.println("only pick the right coin type");
                     continue;
                 }
 
                 System.out.println(">> enter the  number coins for coin type::"+coinType);
                 String coins = scanner.next().trim();
-                map.put(CoinEnum.getCoinEnum(Integer.valueOf(coinType)),Integer.valueOf(coins));
+                map.put(CoinEnum.getCoinEnum(Integer.parseInt(coinType)),Integer.valueOf(coins));
 
             } catch (NumberFormatException nfe) {
                 System.out.println("error occurred during execution");
@@ -89,12 +92,12 @@ public class VendingMachineApplication {
     private int dispenseCoins(Scanner scanner) {
         System.out.println(">> Enter the amount for which you need to dispense coins:");
         String amount = scanner.next();
-        return Integer.valueOf(amount);
+        return Integer.parseInt(amount);
     }
 
-    private void dispenseCoinsToUser(EnumMap<CoinEnum,Integer> outputMap) {
+    private void dispenseCoinsToUser(Map<CoinEnum,Integer> outputMap) {
         System.out.println(">> here are the coins with denominaiton:");
-        outputMap.entrySet().stream().forEach(coinEntry->System.out.println("Coin Denomination::"+coinEntry.getKey().getCoinValue()+"  number of coins::"+ coinEntry.getValue()));
+        outputMap.forEach((key, value) -> System.out.println("Coin Denomination::" + key.getCoinValue() + "  number of coins::" + value));
     }
 
 

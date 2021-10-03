@@ -6,7 +6,6 @@ import com.assignment.vendingmachine.exception.NoSufficientFundsException;
 import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * utility to calculate and work out the number os coins with denomination for given amount
@@ -20,7 +19,7 @@ public class CalculatorUtil {
      * @return enumMap
      * @throws NoSufficientFundsException
      */
-    public  EnumMap<CoinEnum, Integer> calculateCoinsForGivenAmount(int amount, TreeMap<CoinEnum, Integer> sortedMap) throws NoSufficientFundsException {
+    public  Map<CoinEnum, Integer> calculateCoinsForGivenAmount(int amount, Map<CoinEnum, Integer> sortedMap) throws NoSufficientFundsException {
         //enummap to create with each coin enum
         EnumMap<CoinEnum,Integer> outputMap = new EnumMap<>(CoinEnum.class);
         Iterator<CoinEnum> itr = sortedMap.keySet().iterator();
@@ -51,10 +50,8 @@ public class CalculatorUtil {
      * @param outputMap
      * @param originalMap
      */
-    public void emptyTheCoinsFromMachine(EnumMap<CoinEnum, Integer> outputMap, Map<CoinEnum, Integer> originalMap) {
-        outputMap.entrySet().spliterator().forEachRemaining(coinEnumIntegerEntry -> {
-            reduceCoins(coinEnumIntegerEntry.getKey(),coinEnumIntegerEntry.getValue(),originalMap);
-        });
+    public void emptyTheCoinsFromMachine(Map<CoinEnum, Integer> outputMap, Map<CoinEnum, Integer> originalMap) {
+        outputMap.entrySet().spliterator().forEachRemaining(coinEnumIntegerEntry -> reduceCoins(coinEnumIntegerEntry.getKey(),coinEnumIntegerEntry.getValue(),originalMap));
     }
 
 

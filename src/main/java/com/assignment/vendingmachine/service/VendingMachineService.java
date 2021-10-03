@@ -5,6 +5,7 @@ import com.assignment.vendingmachine.exception.NoSufficientFundsException;
 import com.assignment.vendingmachine.state.State;
 
 import java.util.EnumMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public interface VendingMachineService {
@@ -26,7 +27,7 @@ public interface VendingMachineService {
      * @return EnumMap
      * @throws NoSufficientFundsException
      */
-    public EnumMap<CoinEnum,Integer> dispenseCoins(Integer amount) throws NoSufficientFundsException;
+    public Map<CoinEnum,Integer> dispenseCoins(Integer amount) throws NoSufficientFundsException;
 
     /**
      * get current state of the machine
