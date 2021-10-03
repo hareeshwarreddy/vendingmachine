@@ -4,12 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum CoinEnum {
-    ONE_PENSE("ONE_PENSE",1),TWO_PENSE("TWO_PENSE",2),FIVE_PENSE("FIVE_PENSE",5),TEN_PENSE("TEN_PENSE",10),TWENTY_PENSE("TWENTY_PENSE",20),FIFTY_PENSE("FIFTY_PENSE",50);
+    ONE_PENSE(1),TWO_PENSE(2),FIVE_PENSE(5),TEN_PENSE(10),TWENTY_PENSE(20),FIFTY_PENSE(50);
     private int coinValue;
-    private String coinType;
-    CoinEnum(String coinType, int coinValue) {
+    CoinEnum( int coinValue) {
         this.coinValue = coinValue;
-        this.coinType = coinType;
     }
 
     public int getCoinValue() {

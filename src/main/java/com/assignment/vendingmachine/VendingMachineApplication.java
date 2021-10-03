@@ -6,8 +6,6 @@ import com.assignment.vendingmachine.exception.NoSufficientFundsException;
 import com.assignment.vendingmachine.service.VendingMachineService;
 import com.assignment.vendingmachine.service.VendingMachineServiceImpl;
 import com.assignment.vendingmachine.state.State;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -53,7 +51,7 @@ public class VendingMachineApplication {
                         EnumMap<CoinEnum, Integer> outputMap = vendingMachineService.dispenseCoins(app.dispenseCoins(scanner));
                         app.dispenseCoinsToUser(outputMap);
                     } catch (NoSufficientFundsException ex) {
-                        System.out.println("Sorry!!..there are no sufficient coins in the machine to dispense..try with lesser amount");
+                        System.out.println("Sorry!!..there are no supported coins in the machine to dispense for given amount.. please try with different amount");
                     }
                     break;
                 case "4":

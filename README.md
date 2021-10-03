@@ -12,6 +12,7 @@
 ## Assumptions
 -  Coin denominations are integer value
 - Coin denominations are only ONE_PENSE till FIFTY_PENSE
+- dispense amount could only be pounds and integer values, will not support decimals
 - The number of each coin is a positive integer value
 - Coins can only be dispensed if they are available
 - machine will go into EMPTY state if no coins are available

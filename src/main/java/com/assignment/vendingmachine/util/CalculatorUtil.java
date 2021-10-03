@@ -3,8 +3,10 @@ package com.assignment.vendingmachine.util;
 import com.assignment.vendingmachine.coin.CoinEnum;
 import com.assignment.vendingmachine.exception.NoSufficientFundsException;
 
-import java.util.*;
-import java.util.function.Predicate;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * utility to calculate anf work out the number os coins with denomination for given amount
@@ -20,12 +22,13 @@ public class CalculatorUtil {
      */
     public  EnumMap<CoinEnum, Integer> calculateCoinsForGivenAmount(int amount, TreeMap<CoinEnum, Integer> sortedMap) throws NoSufficientFundsException {
         //enummap to create with each coin enum
-        EnumMap<CoinEnum,Integer> outputMap = new EnumMap<CoinEnum,Integer>(CoinEnum.class);
+        EnumMap<CoinEnum,Integer> outputMap = new EnumMap<>(CoinEnum.class);
         Iterator<CoinEnum> itr = sortedMap.keySet().iterator();
         while(amount >0 && itr.hasNext()) {
             CoinEnum coinenum = itr.next();
             if(amount >= coinenum.getCoinValue()) {
                 int countofCoins = amount / coinenum.getCoinValue();
+                //check if the numbers coins exists in original map, else only take the available coins and set the amount with delta
                 if(countofCoins > sortedMap.get(coinenum)) {
                     amount = amount % coinenum.getCoinValue() + coinenum.getCoinValue() *(countofCoins-sortedMap.get(coinenum));
                     countofCoins = sortedMap.get(coinenum);
@@ -36,6 +39,7 @@ public class CalculatorUtil {
 
             }
         }
+        //finally if amount is still greater than 0, means there are no enough coins with set of coin denominations
         if(amount > 0) {
             throw new NoSufficientFundsException("no sufficient coins in the machine to dispense");
         }
