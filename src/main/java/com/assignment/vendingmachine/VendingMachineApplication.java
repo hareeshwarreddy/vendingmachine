@@ -17,10 +17,6 @@ import java.util.*;
  */
 public class VendingMachineApplication {
 
-    private static final Logger logger = LoggerFactory.getLogger(VendingMachineApplication.class);
-    private Map<CoinEnum,Integer> coinMap;
-
-
     public static void main(String[] args) throws Exception {
         VendingMachineApplication app = new VendingMachineApplication();
         VendingMachineService vendingMachineService = new VendingMachineServiceImpl(State.NOT_READY);
