@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * utility to calculate anf work out the number os coins with denomination for given amount
+ * utility to calculate and work out the number os coins with denomination for given amount
  */
 public class CalculatorUtil {
 
@@ -17,7 +17,7 @@ public class CalculatorUtil {
      * calculates the number of coins with each denomination for top to bottom based on coin value
      * @param amount
      * @param sortedMap
-     * @return
+     * @return enumMap
      * @throws NoSufficientFundsException
      */
     public  EnumMap<CoinEnum, Integer> calculateCoinsForGivenAmount(int amount, TreeMap<CoinEnum, Integer> sortedMap) throws NoSufficientFundsException {
@@ -26,17 +26,17 @@ public class CalculatorUtil {
         Iterator<CoinEnum> itr = sortedMap.keySet().iterator();
         while(amount >0 && itr.hasNext()) {
             CoinEnum coinenum = itr.next();
-            if(amount >= coinenum.getCoinValue()) {
-                int countofCoins = amount / coinenum.getCoinValue();
+            int coinValue = coinenum.getCoinValue();
+            if(amount >= coinValue) {
+                int countofCoins = amount / coinValue;
                 //check if the numbers coins exists in original map, else only take the available coins and set the amount with delta
                 if(countofCoins > sortedMap.get(coinenum)) {
-                    amount = amount % coinenum.getCoinValue() + coinenum.getCoinValue() *(countofCoins-sortedMap.get(coinenum));
+                    amount = amount % coinValue + coinValue *(countofCoins-sortedMap.get(coinenum));
                     countofCoins = sortedMap.get(coinenum);
                 }else {
-                    amount = amount % coinenum.getCoinValue();
+                    amount = amount % coinValue;
                 }
                 outputMap.put(coinenum, countofCoins);
-
             }
         }
         //finally if amount is still greater than 0, means there are no enough coins with set of coin denominations

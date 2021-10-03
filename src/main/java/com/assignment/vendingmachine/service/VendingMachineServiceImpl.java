@@ -35,10 +35,10 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         //remove the used coins from machine based on above calculation
         calculatorUtil.emptyTheCoinsFromMachine(outputMap,this.coins);
         //if there are no coins available in the machine, changing state to EMPTY
-        if(this.coins.values().stream().anyMatch(coin -> coin >0))
-                this.state = State.READY;
+        if(this.coins.values().stream().anyMatch(coin -> coin > 0))
+            this.state = State.READY;
         else
-        this.state = State.EMPTY;
+            this.state = State.EMPTY;
         return outputMap;
     }
 
