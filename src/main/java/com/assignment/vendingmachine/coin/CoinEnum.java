@@ -4,7 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum CoinEnum {
-    ONE_PENSE(1),TWO_PENSE(2),FIVE_PENSE(5),TEN_PENSE(10),TWENTY_PENSE(20),FIFTY_PENSE(50);
+    ONE_PENCE(1),
+    TWO_PENCE(2),
+    FIVE_PENCE(5),
+    TEN_PENCE(10),
+    TWENTY_PENCE(20),
+    FIFTY_PENCE(50),
+    ONE_POUND(100),
+    TWO_POUND(200);
     private int coinValue;
     CoinEnum( int coinValue) {
         this.coinValue = coinValue;

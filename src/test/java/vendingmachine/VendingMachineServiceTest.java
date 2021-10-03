@@ -22,8 +22,8 @@ public class VendingMachineServiceTest {
     @Before
     public  void setUp() {
          coins = new TreeMap<>(Collections.reverseOrder());
-        coins.put(CoinEnum.ONE_PENSE,4);
-        coins.put(CoinEnum.TWO_PENSE,5);
+        coins.put(CoinEnum.ONE_PENCE,4);
+        coins.put(CoinEnum.TWO_PENCE,5);
         vendingMachineService = new VendingMachineServiceImpl(State.NOT_READY);
         vendingMachineService.initialiseMachine(coins);
     }

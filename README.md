@@ -11,7 +11,8 @@
 
 ## Assumptions
 -  Coin denominations are integer value
-- Coin denominations are only ONE_PENSE till FIFTY_PENSE
+- Coin denominations are only ONE_PENCE till TWO_POUNDS
+- coin denominaiton value for one pound is 100 and two pounds is 200 
 - dispense amount could only be integer values and it will not support decimals
 - The number of each coin is a positive integer value
 - Coins can only be dispensed if they are available
