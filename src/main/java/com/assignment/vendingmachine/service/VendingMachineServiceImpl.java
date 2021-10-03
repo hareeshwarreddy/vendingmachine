@@ -12,18 +12,18 @@ import java.util.TreeMap;
 public class VendingMachineServiceImpl implements VendingMachineService {
 
     private State state;
-    private TreeMap<CoinEnum, Integer> coins;
+    private Map<CoinEnum, Integer> coins;
     public  VendingMachineServiceImpl(State state) {
         this.state = state;
     }
     @Override
-    public void initialiseMachine(TreeMap<CoinEnum, Integer> coins) {
+    public void initialiseMachine(Map<CoinEnum, Integer> coins) {
         this.coins = coins;
         this.state = State.READY;
     }
 
     @Override
-    public void addMoreCoinsToMachine(TreeMap<CoinEnum, Integer> coins) {
+    public void addMoreCoinsToMachine(Map<CoinEnum, Integer> coins) {
         this.coins = coins;
         this.state = State.READY;
     }

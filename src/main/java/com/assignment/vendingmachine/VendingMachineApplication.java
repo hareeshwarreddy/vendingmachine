@@ -22,6 +22,7 @@ public class VendingMachineApplication {
         System.out.println("\n");
         System.out.println(">> Select an Option from below<<");
         boolean execute  = true;
+        //initialising map and keeping the coins denomination in reverse order
         TreeMap<CoinEnum, Integer> map = new TreeMap<>(Collections.reverseOrder());
         while(execute) {
             if (vendingMachineService.getCurrentState().equals(State.NOT_READY)) {
@@ -35,17 +36,19 @@ public class VendingMachineApplication {
             }
             System.out.println("4:      To Exit");
             String option = scanner.next().trim();
-
-
+            //switch case for each of the option
             switch (option) {
+                //initialising the machine
                 case "1":
                     app.addCoins(map, scanner);
                     vendingMachineService.initialiseMachine(map);
                     break;
+                    //adding more coins to machine
                 case "2":
                     app.addCoins(map, scanner);
                     vendingMachineService.addMoreCoinsToMachine(map);
                     break;
+                    //dispense the coins
                 case "3":
                     try {
                         Map<CoinEnum, Integer> outputMap = vendingMachineService.dispenseCoins(app.dispenseCoins(scanner));

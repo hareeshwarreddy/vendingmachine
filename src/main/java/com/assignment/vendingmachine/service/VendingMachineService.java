@@ -13,13 +13,13 @@ public interface VendingMachineService {
      * intialise the machine set of coins
      * @param coins
      */
-    public void initialiseMachine(TreeMap<CoinEnum,Integer> coins);
+    public void initialiseMachine(Map<CoinEnum,Integer> coins);
 
     /**
      * add more coins to the machine based on user registered coins
      * @param coins
      */
-    public void addMoreCoinsToMachine(TreeMap<CoinEnum,Integer> coins);
+    public void addMoreCoinsToMachine(Map<CoinEnum,Integer> coins);
 
     /**
      * dispense the coins for given amount
